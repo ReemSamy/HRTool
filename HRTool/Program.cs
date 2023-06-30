@@ -1,4 +1,5 @@
 using HRTool.BL;
+using HRTool.BL.Services;
 using HRTool.DAL;
 using HRTool.DAL.Repos.VacationRepo;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,8 @@ namespace HRTool
             builder.Services.AddScoped<IVacationRepo, VacationRepo>();
             builder.Services.AddScoped<IVacationsManager, VacationManager>();
             #endregion
+
+            builder.Services.AddSingleton<ICalculationServices, CalculationServices>(); 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

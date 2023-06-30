@@ -115,7 +115,7 @@ namespace HRTool.DAL.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("VacationRequests");
+                    b.ToTable("Vacations");
                 });
 
             modelBuilder.Entity("HRTool.DAL.VacationType", b =>
@@ -160,7 +160,7 @@ namespace HRTool.DAL.Migrations
             modelBuilder.Entity("HRTool.DAL.VacationRequest", b =>
                 {
                     b.HasOne("HRTool.DAL.Employee", "Employee")
-                        .WithMany("VacationRequests")
+                        .WithMany("Vacations")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -170,7 +170,7 @@ namespace HRTool.DAL.Migrations
 
             modelBuilder.Entity("HRTool.DAL.Employee", b =>
                 {
-                    b.Navigation("VacationRequests");
+                    b.Navigation("Vacations");
 
                     b.Navigation("Vacations");
                 });

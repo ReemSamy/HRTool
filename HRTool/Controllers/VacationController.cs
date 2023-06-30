@@ -17,12 +17,12 @@ namespace HRTool.API.Controllers
         [HttpPost]
         public IActionResult CreateVacation(CreateVacationDto vacationDto)
         {
-            var vacationRequest = _Vacation.CreateVacation(vacationDto);
-            if (vacationRequest == null)
+            var result = _Vacation.CreateVacation(vacationDto);
+            if (!result.IsSuccess)
             {
-                return BadRequest("Vacation Not Created !");
+                return BadRequest(result);
             }
-            return Ok(vacationRequest);
+            return Ok(result);
         }
         [HttpPost("calculate-duration")]
         public IActionResult CalculateDuration(CalculateDurationDto durationDto)

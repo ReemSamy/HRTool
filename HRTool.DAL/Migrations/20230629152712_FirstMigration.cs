@@ -39,7 +39,7 @@ namespace HRTool.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VacationRequests",
+                name: "Vacations",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -109,7 +109,7 @@ namespace HRTool.DAL.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_VacationRequests_EmployeeId",
-                table: "VacationRequests",
+                table: "Vacations",
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
@@ -125,7 +125,7 @@ namespace HRTool.DAL.Migrations
                 name: "VacationDays");
 
             migrationBuilder.DropTable(
-                name: "VacationRequests");
+                name: "Vacations");
 
             migrationBuilder.DropTable(
                 name: "VacationTypes");

@@ -1,11 +1,11 @@
-﻿using HRTool.DAL;
+﻿using HRTool.BL.Dtos.VacationDto;
+using HRTool.DAL;
 
 namespace HRTool.BL
 {
     public interface IVacationsManager
     {
-        Vacation? CreateVacation(CreateVacationDto vacation);
+        CreateVacationResultDto CreateVacation(CreateVacationDto vacationDto);
         int CalculateDeductedBalance(DateTime startDate, DateTime endDate);
-        bool CalculateRemainingBalance(Employee employee, int duration);
     }
 }

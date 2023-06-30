@@ -7,7 +7,7 @@ namespace HRTool.BL
         public int EmployeeId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public string VacationType { get; set; } = string.Empty;
+        public VacationType VacationType { get; set; } 
         public int Duration { get; set; }
     }
 }

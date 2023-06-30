@@ -11,7 +11,9 @@ namespace HRTool.DAL
         }
         public Employee? GetEmployeeById(int id)
         {
-            return _Context.Employees.FirstOrDefault(t => t.Id == id);
+            return _Context.Employees
+               .Include(e => e.Vacations)
+               .FirstOrDefault(t => t.Id == id);
         }
         public void UpdateEmployee(Employee employee)
         {
