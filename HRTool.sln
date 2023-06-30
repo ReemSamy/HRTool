@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRTool.API", "HRTool\HRTool.API.csproj", "{CEDDAECC-638F-4AA9-8EB2-206E3AF0E2FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRTool.BL", "HRTool.BL\HRTool.BL.csproj", "{89321855-00D6-4AE2-945B-2E31779A4BCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRTool.DAL", "HRTool.DAL\HRTool.DAL.csproj", "{DF8D05D1-098B-4D9D-A127-6DF8493E25F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEDDAECC-638F-4AA9-8EB2-206E3AF0E2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEDDAECC-638F-4AA9-8EB2-206E3AF0E2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEDDAECC-638F-4AA9-8EB2-206E3AF0E2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEDDAECC-638F-4AA9-8EB2-206E3AF0E2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89321855-00D6-4AE2-945B-2E31779A4BCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89321855-00D6-4AE2-945B-2E31779A4BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89321855-00D6-4AE2-945B-2E31779A4BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89321855-00D6-4AE2-945B-2E31779A4BCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF8D05D1-098B-4D9D-A127-6DF8493E25F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8D05D1-098B-4D9D-A127-6DF8493E25F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8D05D1-098B-4D9D-A127-6DF8493E25F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF8D05D1-098B-4D9D-A127-6DF8493E25F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7FA2979-8467-4073-B8B4-45FA25643656}
+	EndGlobalSection
+EndGlobal
