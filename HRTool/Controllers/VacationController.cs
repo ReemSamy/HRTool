@@ -12,7 +12,6 @@ namespace HRTool.API.Controllers
         public VacationController(IVacationsManager Vacation, IEmployeeManager employee)
         {
             _Vacation = Vacation;
-            _empolyee = employee;
         }
         [HttpPost]
         public IActionResult CreateVacation(CreateVacationDto vacationDto)

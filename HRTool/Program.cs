@@ -18,10 +18,6 @@ namespace HRTool
             {
                 options.UseSqlServer(DbConnction);
             });
-            //builder.Services.AddControllers().AddJsonOptions(options =>
-            //{
-            //    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-            //});
             builder.Services.AddControllers();
 
             #region Employee Configuration
