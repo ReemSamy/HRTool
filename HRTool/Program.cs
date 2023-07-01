@@ -42,6 +42,8 @@ namespace HRTool
             builder.Services.AddSingleton<ICalculationServices, CalculationServices>();
             #endregion
 
+            #region Handle Integration with Front-End
+
             builder.Services.AddCors(o =>
             {
                 o.AddPolicy("all", p =>
@@ -49,6 +51,7 @@ namespace HRTool
                     p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                 });
             });
+            #endregion
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
