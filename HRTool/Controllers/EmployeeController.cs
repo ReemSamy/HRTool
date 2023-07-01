@@ -15,10 +15,11 @@ namespace HRTool.API.Controllers
         {
             _employee = employee;
         }
+        #region Calaculate Remainig Balance
 
         [HttpGet]
         [Route("AnnualBalance/{employeeId}")]
-        public IActionResult CalculateRemainingBalance (int employeeId)
+        public IActionResult CalculateRemainingBalance(int employeeId)
         {
             var employee = _employee.CalculateRemainingBalance(employeeId);
             if (employee == null)
@@ -27,10 +28,15 @@ namespace HRTool.API.Controllers
             }
             return Ok(employee);
         }
+
+        #endregion
+
+        #region Get All Employees
         [HttpGet]
         public IActionResult GetEmployees ()
         {
             return Ok(_employee.GetEmployees());
         }
+        #endregion
     }
 }

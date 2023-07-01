@@ -15,7 +15,7 @@ namespace HRTool.BL
             _Repo = repo;
             _calculation = calculation;
         }
-
+        #region Calculate Remaining Balance
         public RemainingBalanceDto CalculateRemainingBalance(int employeeId)
         {
             var employee = _Repo.GetEmployeeById(employeeId);
@@ -37,8 +37,9 @@ namespace HRTool.BL
 
             return new RemainingBalanceDto(Annualremaining, Sickremaining);
         }
+        #endregion
 
-
+        #region Get All Employees
         public IEnumerable<EmployeesReadDto> GetEmployees()
         {
             return _Repo.GetEmployees().Select(e => new EmployeesReadDto
@@ -47,5 +48,6 @@ namespace HRTool.BL
                 Name = e.Name,
             });
         }
+        #endregion
     }
 }
