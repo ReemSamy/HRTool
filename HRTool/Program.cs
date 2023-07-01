@@ -14,10 +14,13 @@ namespace HRTool
             var builder = WebApplication.CreateBuilder(args);
             var DbConnction = builder.Configuration.GetConnectionString("DBConnection");
             // Add services to the container.
+            #region Register Context
             builder.Services.AddDbContext<HRContext>(options=>
             {
                 options.UseSqlServer(DbConnction);
             });
+            #endregion
+
             builder.Services.AddControllers();
 
             #region Handle Enum 
