@@ -6,6 +6,6 @@ namespace HRTool.BL
     public interface IVacationsManager
     {
         CreateVacationResultDto CreateVacation(CreateVacationDto vacationDto);
-        int CalculateDeductedBalance(DateTime startDate, DateTime endDate);
+        CalculateBalanceDto CalculateDeductedBalance(DateTime startDate, DateTime endDate);
     }
 }

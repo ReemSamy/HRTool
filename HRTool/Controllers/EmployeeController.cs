@@ -17,38 +17,20 @@ namespace HRTool.API.Controllers
         }
 
         [HttpGet]
-        [Route("/Employee/{id}")]
-        public ActionResult<GetEmployeeByIdDto> GetEmployeeById(int id)
+        [Route("AnnualBalance/{employeeId}")]
+        public IActionResult CalculateRemainingBalance (int employeeId)
         {
-            var Employee = _employee.GetEmployeeById(id);
-            if (Employee == null)
-            {
-                return NotFound();
-            }
-            var employeeDto = new GetEmployeeByIdDto
-            {
-                Id = Employee.Id,
-                Balance = Employee.Balance,
-                Name =Employee.Name,
-            };
-
-            return employeeDto;
-        }
-        [HttpPut]
-        [Route("/Employee/{id}")]
-        public IActionResult UpdateEmployee(int id,UpdateEmployeeDataDto updateEmployeeDataDto)
-        {
-            var employee = _employee.GetEmployeeById(id);
+            var employee = _employee.CalculateRemainingBalance(employeeId);
             if (employee == null)
             {
                 return NotFound();
             }
-            
-            employee.Balance = updateEmployeeDataDto.Balance;
-            _employee.UpdateEmployee(employee, updateEmployeeDataDto.Balance);
-
             return Ok(employee);
         }
-
+        [HttpGet]
+        public IActionResult GetEmployees ()
+        {
+            return Ok(_employee.GetEmployees());
+        }
     }
 }

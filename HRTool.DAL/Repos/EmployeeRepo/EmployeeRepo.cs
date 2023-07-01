@@ -18,9 +18,14 @@ namespace HRTool.DAL
         public void UpdateEmployee(Employee employee)
         {
         }
+        public IEnumerable<Employee> GetEmployees()
+        {
+            return _Context.Employees;
+        }
         public int SaveChanges()
         {
             return _Context.SaveChanges();
         }
+
     }
 }

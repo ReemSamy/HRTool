@@ -1,4 +1,5 @@
-﻿using HRTool.BL.Services;
+﻿using HRTool.BL.Dtos.EmployeeDto;
+using HRTool.BL.Services;
 using HRTool.DAL;
 
 namespace HRTool.BL
@@ -9,41 +10,42 @@ namespace HRTool.BL
         private readonly IEmployeeRepo _Repo;
         private readonly ICalculationServices _calculation;
 
-        public EmployeeManager(IEmployeeRepo repo,ICalculationServices calculation)
+        public EmployeeManager(IEmployeeRepo repo, ICalculationServices calculation)
         {
             _Repo = repo;
             _calculation = calculation;
         }
 
-        public bool CalculateRemainingBalance(int employeeId)
+        public RemainingBalanceDto CalculateRemainingBalance(int employeeId)
         {
             var employee = _Repo.GetEmployeeById(employeeId);
             if (employee == null)
             {
-                return false;
+                return new RemainingBalanceDto(0, 0);
             }
-            var toltalDeducted = employee.Vacations.Sum(v => _calculation.CalculateDeductedBalance(v.StartDate, v.EndDate));
-            var remaining = employee.Balance - toltalDeducted;
-            return true;
-        }
-        
 
-        public Employee? GetEmployeeById(int id)
+            var toltalDeductedFromAnnual = employee.Vacations
+                .Where(v => v.VacationType == VacationType.Annual)
+                .Sum(v => _calculation.CalculateDeductedBalance(v.StartDate, v.EndDate));
+            var Annualremaining = employee.AnnualBalance - toltalDeductedFromAnnual;
+            var toltalDeductedFromSick = employee.Vacations
+               .Where(v => v.VacationType == VacationType.Sick)
+               .Sum(v => _calculation.CalculateDeductedBalance(v.StartDate, v.EndDate));
+
+            var Sickremaining = employee.SickBalance - toltalDeductedFromSick;
+
+
+            return new RemainingBalanceDto(Annualremaining, Sickremaining);
+        }
+
+
+        public IEnumerable<EmployeesReadDto> GetEmployees()
         {
-            var employee = _Repo.GetEmployeeById(id);
-            if (employee == null)
+            return _Repo.GetEmployees().Select(e => new EmployeesReadDto
             {
-                return null;
-            }
-
-            return employee;
-        }
-
-        public bool UpdateEmployee(Employee employee, int newBalance)
-        {
-            employee.Balance = newBalance;
-            _Repo.SaveChanges();
-            return true;
+                Id = e.Id,
+                Name = e.Name,
+            });
         }
     }
 }

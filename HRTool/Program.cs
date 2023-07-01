@@ -20,6 +20,13 @@ namespace HRTool
             });
             builder.Services.AddControllers();
 
+            #region Handle Enum 
+            builder.Services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
+            #endregion
+
             #region Employee Configuration
             builder.Services.AddScoped<IEmployeeRepo,EmployeeRepo>();   
             builder.Services.AddScoped<IEmployeeManager,EmployeeManager>();
@@ -30,13 +37,25 @@ namespace HRTool
             builder.Services.AddScoped<IVacationsManager, VacationManager>();
             #endregion
 
-            builder.Services.AddSingleton<ICalculationServices, CalculationServices>(); 
+            #region Caluclation Service Configuration
+
+            builder.Services.AddSingleton<ICalculationServices, CalculationServices>();
+            #endregion
+
+            builder.Services.AddCors(o =>
+            {
+                o.AddPolicy("all", p =>
+                {
+                    p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -46,6 +65,8 @@ namespace HRTool
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("all");
 
             app.UseAuthorization();
 

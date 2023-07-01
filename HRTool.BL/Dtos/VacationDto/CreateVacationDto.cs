@@ -8,6 +8,5 @@ namespace HRTool.BL
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public VacationType VacationType { get; set; } 
-        public int Duration { get; set; }
     }
 }

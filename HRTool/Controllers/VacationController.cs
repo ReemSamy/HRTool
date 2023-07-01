@@ -8,11 +8,12 @@ namespace HRTool.API.Controllers
     public class VacationController : ControllerBase
     {
         private readonly IVacationsManager _Vacation;
-        private readonly IEmployeeManager _empolyee;
-        public VacationController(IVacationsManager Vacation, IEmployeeManager employee)
+
+        public VacationController(IVacationsManager Vacation)
         {
             _Vacation = Vacation;
         }
+        #region Create Vacations
         [HttpPost]
         public IActionResult CreateVacation(CreateVacationDto vacationDto)
         {
@@ -23,13 +24,16 @@ namespace HRTool.API.Controllers
             }
             return Ok(result);
         }
-        [HttpPost("calculate-duration")]
-        public IActionResult CalculateDuration(CalculateDurationDto durationDto)
+        #endregion
+
+        #region Calculate Remaining Balance
+        [HttpPost("calculate-Balance")]
+        public IActionResult CalculateBalance(CalculateDurationDto durationDto)
         {
             var calculationOfVacation = _Vacation.CalculateDeductedBalance(durationDto.StartDate, durationDto.EndDate);
 
             return Ok(calculationOfVacation);
         }
+        #endregion
     }
 }
- 

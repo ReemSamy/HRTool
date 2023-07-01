@@ -17,11 +17,16 @@ namespace HRTool.BL
             _vacationRepo = vacationRepo;
             _calculationServices = calculationServices;
         }
-        public int CalculateDeductedBalance(DateTime startDate, DateTime endDate)
-        {
-           return _calculationServices.CalculateDeductedBalance(startDate, endDate);
-        }
 
+        #region Deduct The Balance
+        public CalculateBalanceDto CalculateDeductedBalance(DateTime startDate, DateTime endDate)
+        {
+          var balance=  _calculationServices.CalculateDeductedBalance(startDate, endDate);
+            return new CalculateBalanceDto(balance);
+        }
+        #endregion
+
+        #region Create Vacations
         public CreateVacationResultDto CreateVacation(CreateVacationDto vacationDto)
         {
             var vacations = _vacationRepo.GetEmployeeVacations(vacationDto.EmployeeId);
@@ -45,5 +50,6 @@ namespace HRTool.BL
 
             return new CreateVacationResultDto(true, "Success");
         }
+        #endregion
     }
 }

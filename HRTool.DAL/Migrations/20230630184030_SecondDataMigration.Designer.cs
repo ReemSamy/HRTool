@@ -4,6 +4,7 @@ using HRTool.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRTool.DAL.Migrations
 {
     [DbContext(typeof(HRContext))]
-    partial class HRContextModelSnapshot : ModelSnapshot
+    [Migration("20230630184030_SecondDataMigration")]
+    partial class SecondDataMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,21 +53,21 @@ namespace HRTool.DAL.Migrations
                             Id = 1,
                             AnnualBalance = 21,
                             Name = "John Doe",
-                            SickBalance = 50
+                            SickBalance = 0
                         },
                         new
                         {
                             Id = 2,
                             AnnualBalance = 21,
                             Name = "Jane Smith",
-                            SickBalance = 50
+                            SickBalance = 0
                         },
                         new
                         {
                             Id = 3,
                             AnnualBalance = 21,
                             Name = "Mark Johnson",
-                            SickBalance = 50
+                            SickBalance = 0
                         });
                 });
 
